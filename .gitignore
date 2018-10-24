@@ -1,0 +1,26 @@
+# OSX
+#
+.DS_Store
+
+
+# React Native
+android/*
+ios/*
+.buckconfig
+.flowconfig
+.gitattributes
+.watchmanconfig
+
+
+#
+build/
+.idea
+.gradle
+local.properties
+*.iml
+
+# node.js
+#
+node_modules/
+npm-debug.log
+yarn-error.log
