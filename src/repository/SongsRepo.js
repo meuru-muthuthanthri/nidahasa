@@ -10,6 +10,11 @@ const getSongs = () => {
     }, []);
 };
 
+const filterSongs = (songs, payload) => {
+    return _.filter(songs, (song) => song.key.includes(payload));
+};
+
 export {
-    getSongs
+    getSongs,
+    filterSongs,
 }

@@ -19,7 +19,6 @@ const Navigator = createStackNavigator({
 export default class App extends React.Component {
     render() {
 
-        console.log('hi');
         store.dispatch(Actions.global.appStart());
 
         return (

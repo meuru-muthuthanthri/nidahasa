@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
-import HomeScreenView from './Views/HomeScreenView';
+import SongListViewWrapper from './Views/SongListViewWrapper';
 import { Actions } from './Actions'
 
 const mapStateToProps = state => {
     return {
+        songs: state.homeScreen.get('filteredSongs'),
     }
 };
 
@@ -11,13 +12,12 @@ const mapDispatchToProps = dispatch => {
     return {
         onSelectSong: (song) => { dispatch(Actions.homeScreen.selectSong(song)); },
         onSearchTextChange: (data) => { dispatch(Actions.homeScreen.searchSong(data))},
-                onSearchTextClear: () => { dispatch(Actions.homeScreen.clearSearch())},
     }
 };
 
-const HomeScreen = connect(
+const SongList = connect(
     mapStateToProps,
     mapDispatchToProps
-)(HomeScreenView);
+)(SongListViewWrapper);
 
-export default HomeScreen;
+export default SongList;
