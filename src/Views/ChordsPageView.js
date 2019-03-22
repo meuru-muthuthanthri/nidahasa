@@ -1,13 +1,20 @@
 import React from 'react';
 import { ScrollView, Text, StyleSheet, Button, View, Picker } from 'react-native';
 import _  from 'lodash';
-import { CHORDS } from '../Constants'
+import { CHORDS } from '../Constants';
+import CommonManager from '../logic/CommonManager';
 
 const pickerItems = _.map(CHORDS, (key, label) => {
     return <Picker.Item label={label} value={key} key={key}/>;
 });
 
 const ChordsPageView = ({ navigation, song, chord, onTransposeSong }) => {
+    const lines = CommonManager.splitLyrics(song);
+    let songLyrics = _.map(lines,
+            lineObj => lineObj.type === 'chord'
+                ? <Text style={styles.body2}>{_.get(lineObj, 'line', '')}</Text>
+                : <Text style={styles.body}>{_.get(lineObj, 'line', '')}</Text>
+    );
     return (
         <View>
             <Picker
@@ -20,7 +27,7 @@ const ChordsPageView = ({ navigation, song, chord, onTransposeSong }) => {
                 {pickerItems}
             </Picker>
             <ScrollView style={styles.contentContainer}>
-                <Text style={styles.body}>{song}</Text>
+                {songLyrics}
             </ScrollView>
         </View>
     );
@@ -50,7 +57,13 @@ const styles = StyleSheet.create({
     },
     body: {
         color: '#ffffff',
-        // fontSize: 10
+        fontFamily: 'Impact',
+        fontSize: 12
+    },
+    body2: {
+        color: '#ffffff',
+        fontFamily: 'Impact',
+        fontSize: 16.25
     },
     container: {
         flex: 1,

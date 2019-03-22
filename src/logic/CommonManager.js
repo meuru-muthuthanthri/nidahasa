@@ -53,6 +53,19 @@ const transposeUp = (chord = '') => {
     return chord;
 };
 
-export {
-    transpose
+const splitLyrics = (hymn = '') => {
+    const lines = hymn.split('\n');
+    const lineList = _.map(lines, (line) => ({ type: getType(line), line }));
+    return lineList;
+};
+
+const getType = (line = '') => {
+    const lineWithoutWhitespaces = line.replace(/\s/g,'');
+    const isWords = line.length > 1 && lineWithoutWhitespaces.length/line.length > 0.25;
+    return isWords ? 'words' : 'chord';
+};
+
+export default {
+    transpose,
+    splitLyrics,
 }
