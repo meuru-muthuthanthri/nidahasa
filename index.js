@@ -1,5 +1,6 @@
 /** @format */
 
+import 'babel-polyfill';
 import 'es6-symbol/implement'
 import 'core-js/es6/symbol';
 import 'core-js/fn/symbol/iterator';
