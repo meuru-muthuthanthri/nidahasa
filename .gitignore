@@ -4,7 +4,6 @@
 
 
 # React Native
-android/*
 ios/*
 .buckconfig
 .flowconfig
@@ -16,7 +15,6 @@ ios/*
 build/
 .idea
 .gradle
-local.properties
 *.iml
 
 # node.js
