@@ -19,4 +19,34 @@ describe('splitLyrics', () => {
             { type: 'chord', line: '' }];
         expect(CommonManager.splitLyrics(hymn)).to.be.deep.equal(result);
     });
+
+    it('should identify long chord lines correctly', () => {
+      const hymn = '    F#m      E     A E      F#m\n' + 
+        'අහෝ දෙවිඳුනී අහෝ දෙවිඳුනී\n' + 
+        '    F#m    E     A   G   F#m\n' +
+        'අහෝ ජේසුනී අහෝ  ජේසුනී';
+
+
+      const result = CommonManager.splitLyrics(hymn);
+      expect(result[0].type).to.be.equal('chord');
+  });
+});
+
+describe('hasOnlyChordChars', () => {
+  it('should work properly', () => {
+    expect(CommonManager.hasOnlyChordChars('')).to.be.false;
+    expect(CommonManager.hasOnlyChordChars('A')).to.be.true;
+    expect(CommonManager.hasOnlyChordChars('A   A')).to.be.true;
+    expect(CommonManager.hasOnlyChordChars('A   A\n')).to.be.true;
+    expect(CommonManager.hasOnlyChordChars('    F#m      E     A E      F#m\n')).to.be.true;
+
+    expect(CommonManager.hasOnlyChordChars('How are you\n')).to.be.false;
+  })
+});
+
+describe('sanitizeChord', () => {
+  it('should work properly', () => {
+    expect(CommonManager.sanitizeChord('A')).to.be.equal('A');
+    expect(CommonManager.sanitizeChord('F#m')).to.be.equal('F#');
+  })
 });

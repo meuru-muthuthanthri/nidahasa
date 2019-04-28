@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest ./src/logic/test"
   },
   "dependencies": {
     "chord-transposer": "^2.0.1",
@@ -24,11 +24,14 @@
     "babel-jest": "23.6.0",
     "babel-polyfill": "^6.26.0",
     "chai": "^4.2.0",
-    "jest": "23.6.0",
+    "jest": "^23.6.0",
     "metro-react-native-babel-preset": "0.48.1",
-    "react-test-renderer": "16.6.0-alpha.8af6728"
+    "react-test-renderer": "^16.6.0-alpha.8af6728"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    }
   }
 }

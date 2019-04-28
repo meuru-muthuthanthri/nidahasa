@@ -61,11 +61,19 @@ const splitLyrics = (hymn = '') => {
 
 const getType = (line = '') => {
     const lineWithoutWhitespaces = line.replace(/\s/g,'');
-    const isWords = line.length > 1 && lineWithoutWhitespaces.length/line.length > 0.25;
+    const isWords = line.length > 1 && (lineWithoutWhitespaces.length/line.length > 0.25 && !hasOnlyChordChars(line));
     return isWords ? 'words' : 'chord';
 };
+
+const hasOnlyChordChars = (line = '') => {
+    return /^[A-G#bmdimaugsus]+$/.test(line.replace(/[\x00-\x1F\x7F-\x9F\x20]/g, ''));
+};
+
+const sanitizeChord = (chord = '') => chord.substring(0,2);
 
 export default {
     transpose,
     splitLyrics,
+    hasOnlyChordChars,
+    sanitizeChord,
 }
