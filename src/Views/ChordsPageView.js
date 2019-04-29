@@ -11,9 +11,9 @@ const pickerItems = _.map(CHORDS, (key, label) => {
 const ChordsPageView = ({ navigation, song, chord, onTransposeSong }) => {
     const lines = CommonManager.splitLyrics(song);
     let songLyrics = _.map(lines,
-            lineObj => lineObj.type === 'chord'
-                ? <Text style={styles.body2}>{_.get(lineObj, 'line', '')}</Text>
-                : <Text style={styles.body}>{_.get(lineObj, 'line', '')}</Text>
+            (lineObj, key) => lineObj.type === 'chord'
+                ? <Text style={styles.body2} key={key}>{_.get(lineObj, 'line', '')}</Text>
+                : <Text style={styles.body} key={key}>{_.get(lineObj, 'line', '')}</Text>
     );
     return (
         <View>

@@ -1,7 +1,6 @@
 import { Map } from 'immutable';
 import { Events } from '../Actions';
 import { transpose } from 'chord-transposer';
-import CommonManager from '../logic/CommonManager';
 
 const initialState = Map({
     selectedSong : {},
@@ -16,7 +15,7 @@ const chordsPageReducer = (state = initialState, action ) => {
             return state
                 .set('selectedSong', payload)
                 .set('song', payload.body)
-                .set('chord', normalizeChord(CommonManager.sanitizeChord(payload.chord)));
+                .set('chord', normalizeChord(payload.chord));
         case Events.chordsPage.TRANSPOSE_SONG: {
             try {
                 const song = transpose(state.get('selectedSong').body).fromKey(state.get('selectedSong').chord).toKey(payload).toString();

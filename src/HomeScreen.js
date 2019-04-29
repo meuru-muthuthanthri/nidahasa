@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import _ from 'lodash'
 import HomeScreenView from './Views/HomeScreenView';
 import { Actions } from './Actions'
 
@@ -10,8 +11,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onSelectSong: (song) => { dispatch(Actions.homeScreen.selectSong(song)); },
-        onSearchTextChange: (data) => { dispatch(Actions.homeScreen.searchSong(data))},
-                onSearchTextClear: () => { dispatch(Actions.homeScreen.clearSearch())},
+        onSearchTextChange: (data) => { dispatch(Actions.homeScreen.searchSong(_.toLower(data)))},
+        onSearchTextClear: () => { dispatch(Actions.homeScreen.clearSearch())},
     }
 };
 
