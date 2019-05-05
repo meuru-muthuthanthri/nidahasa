@@ -4,6 +4,7 @@ Collection of Hymns
 Running tha App
 * sudo n 11.0.0
 * source ~/.bash_profile
+* adb devices
 * react-native run-android
 
 Release app 
