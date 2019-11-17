@@ -15,3 +15,6 @@ Release app
     * Connect the device
     * adb devices -  should list devices
     * react-native run-android --variant=release
+
+Testing
+* npm test -- --watch

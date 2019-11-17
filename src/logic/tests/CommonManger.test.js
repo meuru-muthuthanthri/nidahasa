@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import CommonManager from '../CommonManager';
+import ChordSheetJS from 'chordsheetjs';
 
 describe('splitLyrics', () => {
     it('should split lyrics properly', () => {
@@ -48,5 +49,24 @@ describe('sanitizeChord', () => {
   it('should work properly', () => {
     expect(CommonManager.sanitizeChord('A')).to.be.equal('A');
     expect(CommonManager.sanitizeChord('F#m')).to.be.equal('F#');
+  })
+});
+
+describe.only('ddd', () => {
+  it('should work properly', () => {
+
+    const chordSheet = `
+    Let it [Am]be, let it [C/G]be, let it [F]be, let it [C]be
+    [C]Whisper words of [G]wisdom, let it [F]be [C/E] [Dm] [C]`.substring(1);
+
+
+const parser = new ChordSheetJS.ChordSheetParser();
+const song = parser.parse(chordSheet);
+
+const formatter = new ChordSheetJS.HtmlTableFormatter();
+const disp = formatter.format(song);
+
+console.log(disp);
+expect('A').to.be.equal('A');
   })
 });

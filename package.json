@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "chord-transposer": "^2.0.1",
+    "chordsheetjs": "^2.9.1",
     "core-js": "^2.5.7",
     "es6-symbol": "^3.1.1",
     "immutable": "^3.8.2",
